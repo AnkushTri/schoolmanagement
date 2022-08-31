@@ -5,7 +5,7 @@ include "config.php";
 $q = "select * from `holidays` where id='$id'";
 $result = mysqli_query($conn, $q);
 $data = mysqli_fetch_assoc($result);
-print_r($data);
+// /print_r($data);
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $description = $_POST['description'];
@@ -47,20 +47,20 @@ if (isset($_POST['submit'])) {
                     <form method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                             <label for="exampleInputName" class="form-label">Name</label>
-                            <input type="text" name="name" class="form-control" id="exampleInputName" aria-describedby="emailHelp"; value="<?php echo $data['name']; ?>">                                          
+                            <input type="text" name="name" class="form-control" id="exampleInputName" aria-describedby="emailHelp"; value="<?php echo $data['name']; ?>" required>                                          
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputDescription" class="form-label">Description</label>
-                            <textarea class="form-control" name="description" id="exampleInputDescription"><?php echo $data['description']; ?></textarea>
+                            <textarea class="form-control" name="description" id="exampleInputDescription" required><?php echo $data['description']; ?></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Image</label>
                             <input class="form-control" type="file" id="formFile" name="pic">
-                            <img class="img img-fluid" style="height:50px ;" src="../upload/ value=<?php echo $data['image']; ?>">
+                            <img class="img img-fluid" style="height:50px ;" src="../upload/<?php echo $data['image']; ?>">
                         </div>    
                         <div class="mb-3">
                             <label for="exampleInputDate" class="form-label">Date</label>
-                            <input type="text" name="date" class="form-control" id="exampleInputDate" aria-describedby="emailHelp"  value="<?php echo $data['date'];?>">                                          
+                            <input type="date" name="date" class="form-control" id="exampleInputDate" aria-describedby="emailHelp"  value="<?php echo $data['date'];?>" required>                                          
                         </div>
                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                     </form>

@@ -41,7 +41,7 @@ if(!isset($_SESSION['admin_name'])){
                             ?>
                             <tr>
                                         <td><?php echo $i;?></td>
-                                        <td><?php echo $data['class_name'];?></td>                                                                          
+                                        <td><?php echo $data['name'];?></td>                                                                          
                                         <td><a href="edit_classes.php?id=<?php echo $data['id'];?>" class="text-success fw-bold"><i class="bi bi-pencil-square"></i></a></td>
                                         <td><a href="delete_classes.php?id=<?php echo $data['id'];?>"><i class="bi bi-trash"></i></a></td>
                                     </tr>

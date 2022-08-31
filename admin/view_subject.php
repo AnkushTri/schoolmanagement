@@ -49,11 +49,11 @@ if(!isset($_SESSION['admin_name'])){
                                             $res = mysqli_query($conn,$c);
                                             $class = mysqli_fetch_assoc($res);
                                             // print_r($class);
-                                            echo $class['class_name']; //Error
+                                            echo $class['name']; //Error
                                         ?></td>
                                         <td><?php echo $data['name'];?></td>                                                                          
-                                        <td><a class="text-success fw-bold"><i class="bi bi-pencil-square"></i></a></td>
-                                        <td><a href="delete_classes.php?id=<?php echo $data['id'];?>"><i class="bi bi-trash"></i></a></td>
+                                        <td><a href="edit_subject.php?id=<?php echo $data['id'];?>" class="text-success fw-bold"><i class="bi bi-pencil-square"></i></a></td>
+                                        <td><a href="delete_subject.php?id=<?php echo $data['id'];?>"><i class="bi bi-trash"></i></a></td>
                                     </tr>
                                 <?php
                                     $i++;

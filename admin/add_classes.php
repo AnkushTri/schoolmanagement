@@ -17,29 +17,30 @@ if (!isset($_SESSION['admin_name'])) {
 
             <div class="row">
                 <div class="col-lg-6 order-1 order-lg-2 mx-auto" data-aos="fade-left" data-aos-delay="100">
-                    <?php
+                    <?php                    
+                    include "config.php";
                     if (isset($_GET['submit'])) {
                         echo "<div class='col-12 alert alert-success'>Form Submitted!!!</div>";
                     }
                     if (isset($_GET['err'])) {
-                        echo "Error";
+                        echo "<div class='col-12 alert alert-danger'>Error!!!</div>";
                     }
                     if (isset($_POST['submit'])) {
-                        include "config.php";
-                        $class_name = $_POST['class_name'];
-                        $q = "insert into `classes` (`class_name`)value('$class_name')";
+                        $name = $_POST['name'];
+                        $q = "insert into `classes` (`name`)value('$name')";
                         $result = mysqli_query($conn, $q);
                         if ($result > 0) {
                             echo "<script>window.location.assign('add_classes.php?submit=Data Inserted ');</script>";
                         } else {
                             echo "<script>window.location.assign('add_classes.php?err');</script>";
+                            // echo mysqli_error($conn);
                         }
                     }
                     ?>
                     <form method="post">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Name</label>
-                            <input type="text" name="class_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
 
                         </div>
                         <button type="submit" class="btn btn-success" name="submit">Submit</button>

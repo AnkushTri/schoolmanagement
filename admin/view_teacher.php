@@ -28,7 +28,7 @@ if(!isset($_SESSION['admin_name'])){
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>                             
                                 <th scope="col">email</th>                             
-                                <th scope="col">password</th>                             
+                                <!-- <th scope="col">password</th>                              -->
                                 <th scope="col">contact</th>                             
                                 <th scope="col">qualification</th>                             
                                 <th scope="col">experience</th>                             
@@ -51,14 +51,14 @@ if(!isset($_SESSION['admin_name'])){
                                         <td><?php echo $i;?></td>
                                         <td><?php echo $data['name'];?></td>                                                                          
                                         <td><?php echo $data['email'];?></td>                                                                          
-                                        <td><?php echo $data['password'];?></td>                                                                          
+                                        <!-- <td><?php echo $data['password'];?></td>                                                                           -->
                                         <td><?php echo $data['contact'];?></td>                                                                          
                                         <td><?php echo $data['qualification'];?></td>                                                                          
                                         <td><?php echo $data['experience'];?></td>                                                                          
                                         <td><?php echo $data['gender'];?></td>                                                                          
                                         <td><?php echo $data['dob'];?></td>                                                                          
                                         <td><img class="img img-fluid" style="height:50px;" src="../upload/<?php echo $data['id_proof'];?>"></td>                                                                       
-                                        <td><a class="text-success fw-bold"><i class="bi bi-pencil-square"></i></a></td>
+                                        <td><a href="edit_teacher.php?id=<?php echo $data['id'];?>" class="text-success fw-bold"><i class="bi bi-pencil-square"></i></a></td>
                                         <td><a href="delete_teacher.php?id=<?php echo $data['id'];?>"><i class="bi bi-trash"></i></a></td>
                                     </tr>
                                 <?php

@@ -57,7 +57,7 @@ if(!isset($_SESSION['admin_name'])){
                                             $res = mysqli_query($conn,$c);
                                             $class = mysqli_fetch_assoc($res);
                                             // print_r($class);
-                                            echo $class['class_name']; //Error
+                                            echo $class['name']; //Error
                                         ?></td>
                                         <td><?php echo $data['section'];?></td>   
                                         <td><?php 
@@ -67,7 +67,7 @@ if(!isset($_SESSION['admin_name'])){
                                             $class = mysqli_fetch_assoc($res);
                                             echo $class['name']; 
                                         ?></td>                                                                                                                                              
-                                        <td><a class="text-success fw-bold"><i class="bi bi-pencil-square"></i></a></td>
+                                        <td><a href="edit_assign_teacher.php?id=<?php echo $data['id'];?>" class="text-success fw-bold"><i class="bi bi-pencil-square"></i></a></td>
                                         <td><a href="delete_assign_teacher.php?id=<?php echo $data['id'];?>"><i class="bi bi-trash"></i></a></td>
                                     </tr>
                                 <?php

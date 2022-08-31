@@ -46,9 +46,9 @@ if(!isset($_SESSION['admin_name'])){
                                 <?php
                                     $q = "select * from `teacher`";
                                     $result = mysqli_query($conn,$q);
-                                    foreach($result as $data){
+                                    foreach($result as $teacher){
                                         ?>
-                                        <option value="<?php echo $data['id'];?>"><?php echo $data['name'];?></option>
+                                        <option value="<?php echo $teacher['id'];?>"><?php echo $teacher['name'];?></option>
                                         <?php
                                     }
                                 ?>
@@ -60,9 +60,9 @@ if(!isset($_SESSION['admin_name'])){
                                 <?php
                                     $q = "select * from `classes`";
                                     $result = mysqli_query($conn,$q);
-                                    foreach($result as $data){
+                                    foreach($result as $class){
                                         ?>
-                                        <option value="<?php echo $data['id'];?>"><?php echo $data['class_name'];?></option>
+                                        <option value="<?php echo $class['id'];?>"><?php echo $class['name'];?></option>
                                         <?php
                                     }
                                 ?>
@@ -78,9 +78,9 @@ if(!isset($_SESSION['admin_name'])){
                                 <?php
                                     $q = "select * from `subject`";
                                     $result = mysqli_query($conn,$q);
-                                    foreach($result as $data){
+                                    foreach($result as $section){
                                         ?>
-                                        <option value="<?php echo $data['id'];?>"><?php echo $data['name'];?></option>
+                                        <option value="<?php echo $section['id'];?>"><?php echo $section['name'];?></option>
                                         <?php
                                     }
                                 ?>
