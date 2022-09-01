@@ -1,6 +1,6 @@
 <?php
 require "header.php";
-if(!isset($_SESSION['admin_name'])){
+if(!isset($_SESSION['teacher_name'])){
     echo "<script>window.location.assign('login.php');</script>";
   }
 ?>
@@ -30,17 +30,16 @@ if(!isset($_SESSION['admin_name'])){
                                 <th scope="col">Description</th>                             
                                 <th scope="col">Class</th>                             
                                 <th scope="col">Subject</th>                             
-                                <th scope="col">Section</th>                             
-                                <th scope="col">Teacher</th>                             
+                                <th scope="col">Section</th>                            
                                 <th scope="col">File</th>                             
-                                <th scope="col">Edit</th>
+                                <!-- <th scope="col">Edit</th> -->
                                 <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             include "config.php";
-                            $q = "select * from `homework`";
+                            $q = "SELECT homework.*,classes.name as c_name, subject.name as s_name FROM `homework` LEFT JOIN classes on homework.class_id=classes.id LEFT JOIN subject ON homework.subject_id=subject.id where homework.teacher_id='".$_SESSION['teacher_id']."'";
                             $result = mysqli_query($conn,$q);
                             $i = 1;
                             foreach($result as $data){
@@ -49,12 +48,11 @@ if(!isset($_SESSION['admin_name'])){
                                         <td><?php echo $i;?></td>
                                         <td><?php echo $data['title'];?></td>                                                                          
                                         <td><?php echo $data['description'];?></td>                                                                          
-                                        <td><?php echo $data['class_id'];?></td>                                                                          
-                                        <td><?php echo $data['subject_id'];?></td>                                                                          
-                                        <td><?php echo $data['section'];?></td>                                                                          
-                                        <td><?php echo $data['teacher_id'];?></td>                                                                          
-                                        <td><?php echo $data['file'];?></td>                                                                          
-                                        <td><a href="edit_homework.php?id=<?php echo $data['id'];?>" class="text-success fw-bold"><i class="bi bi-pencil-square"></i></a></td>
+                                        <td><?php echo $data['c_name'];?></td>                                                                          
+                                        <td><?php echo $data['s_name'];?></td>                                                                          
+                                        <td><?php echo $data['section'];?></td>                                                                        
+                                        <td><a target="_blank" href="../upload/<?php echo $data['file'];?>">View File</a></td>                                                                          
+                                        <!-- <td><a href="edit_homework.php?id=<?php //echo $data['id'];?>" class="text-success fw-bold"><i class="bi bi-pencil-square"></i></a></td> -->
                                         <td><a href="delete_homework.php?id=<?php echo $data['id'];?>"><i class="bi bi-trash"></a></td>
                                     </tr>
                                 <?php

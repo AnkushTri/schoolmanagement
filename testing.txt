@@ -8,3 +8,4 @@
 8. no password encryption for add teacher
 9. donot show password for teacher in admin panel
 10. edit teacher, edit subject, delete subject, edit assign teacher missing
+11. Donot use ' and space in database column name

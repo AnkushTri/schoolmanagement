@@ -19,20 +19,21 @@ require "header.php";
                     echo "<div class='col-12 alert alert-danger'>Please Login First.</div>";
                 }
                     if(isset($_POST['submit'])){
-                        include "config.php";
+                        include "admin/config.php";
                         $email = $_POST['email'];
                         $password = md5($_POST['password']);
                         //echo $email.' '.$password;
-                        $q = "select * from `teacher_panel` where `email`='$email' and `password`='$password'";
+                        $q = "select * from `student` where `email`='$email' and `password`='$password'";
                         $result = mysqli_query($conn,$q);
                         if(mysqli_num_rows($result) > 0){
                             //login
                             $data = mysqli_fetch_assoc($result);
-                            $_SESSION['admin_name'] = $data['name'];
-                            $_SESSION['admin_email'] = $data['email'];
-                            $_SESSION['admin_id'] = $data['id'];
+                            $_SESSION['user_name'] = $data['name'];
+                            $_SESSION['user_email'] = $data['email'];
+                            $_SESSION['user_id'] = $data['id'];
                             echo "<script>window.location.assign('index.php');</script>";
                         }else{
+                          echo mysqli_error($conn);
                             //invalid
                             echo "<div class='col-12 alert alert-danger'>Invalid Email/Password.</div>";
                         }

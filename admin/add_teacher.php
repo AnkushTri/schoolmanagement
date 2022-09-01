@@ -18,6 +18,12 @@ if(!isset($_SESSION['admin_name'])){
 
             <div class="row">
                 <?php
+                if (isset($_GET['msg'])) {
+                    echo "<div class='col-12 alert alert-success'>Form Submitted!!!</div>";
+                }
+                if (isset($_GET['err'])) {
+                    echo "<div class='col-12 alert alert-danger'>Error!!!</div>";
+                }
                 if (isset($_POST['submit'])) {
                     //print_r($_FILES);
                     include "config.php";
@@ -34,9 +40,8 @@ if(!isset($_SESSION['admin_name'])){
                     $q = "insert into `teacher`(`name`,`email`,`password`,`contact`,`qualification`,`experience`,`gender`,`dob`,`id_proof`) value('$name','$email','$password','$contact','$qualification','$experience','$gender','$dob','$image')";
                     $result = mysqli_query($conn, $q);
                     if ($result > 0) {
-                        //echo "<script>window.location.assign('add_teacher.php?msg');</script>";
                         move_uploaded_file($location,'../upload/'.$image);//used to save image from temporary folder to our project folder
-                        echo "<div class='col-12 alert alert-success'>Teacher's Information Inserted!!!</div>";
+                        echo "<script>window.location.assign('add_teacher.php?msg');</script>";
                         
                     } else {
                         echo "No";

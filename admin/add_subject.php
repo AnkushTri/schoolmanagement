@@ -18,11 +18,11 @@ if(!isset($_SESSION['admin_name'])){
             <div class="row">
             <?php            
                 include "config.php";
-                if (isset($_GET['submit'])) {
+                if (isset($_GET['msg'])) {
                     echo "<div class='col-12 alert alert-success'>Form Submitted!!!</div>";
                 }
                 if (isset($_GET['err'])) {
-                    echo "Error";
+                    echo "<div class='col-12 alert alert-danger'>Error!!!</div>";
                 }
                 if (isset($_POST['submit'])) {
                     $name = $_POST['name'];
@@ -30,7 +30,7 @@ if(!isset($_SESSION['admin_name'])){
                     $q = "insert into `subject` (`name`,`class_id`) values ('$name','$class_id')";
                     $result = mysqli_query($conn, $q);
                     if($result>0){
-                        echo"<script>window.location.assign('add_subject.php?submit=Data_Inserted ');</script>";
+                        echo"<script>window.location.assign('add_subject.php?msg=Data_Inserted ');</script>";
                     }else{
                         echo"<script>window.location.assign('add_subject.php?err');</script>";
                     }

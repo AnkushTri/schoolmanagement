@@ -1,6 +1,6 @@
 <?php
 require "header.php";
-if(!isset($_SESSION['admin_name'])){
+if(!isset($_SESSION['user_name'])){
     echo "<script>window.location.assign('login.php');</script>";
   }
 ?>
@@ -8,7 +8,7 @@ if(!isset($_SESSION['admin_name'])){
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
         <div class="container">
-            <h2>View Class</h2>
+            <h2>View Holidays</h2>
         </div>
     </div><!-- End Breadcrumbs -->
     <!-- ======= About Section ======= -->
@@ -22,24 +22,30 @@ if(!isset($_SESSION['admin_name'])){
                     }
                 ?>
                 <div class="col-lg-12 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                    <table class="table text-center">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>                             
+                                <th scope="col">Description</th>                             
+                                <th scope="col">Image</th>                             
+                                <th scope="col">Date</th> 
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            include "config.php";
-                            $q = "select * from `classes`";
+                            include "admin/config.php";
+                            $q = "select * from `holidays`";
                             $result = mysqli_query($conn,$q);
                             $i = 1;
                             foreach($result as $data){
                             ?>
                             <tr>
                                         <td><?php echo $i;?></td>
-                                        <td><?php echo $data['class_name'];?></td>                                                                          
+                                        <td><?php echo $data['name'];?></td>                                                                          
+                                        <td><?php echo $data['description'];?></td>  
+                                        <td><img class="img img-fluid" style="height:50px;" src="upload/<?php echo $data['image'];?>"></td>                                                                                                                                 
+                                        <td><?php echo $data['date'];?></td>                                                                          
                                     </tr>
                                 <?php
                                     $i++;
@@ -55,4 +61,4 @@ if(!isset($_SESSION['admin_name'])){
 </main>
 <?php
 require "footer.php";
-?>                                                                           
+?>                                                                            

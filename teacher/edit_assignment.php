@@ -2,7 +2,7 @@
 require "header.php";
 $id = $_GET['id'];
 include "config.php";
-$q = "select * from `homework` where id='$id'";
+$q = "select * from `assignment` where id='$id'";
 $result = mysqli_query($conn, $q);
 $data = mysqli_fetch_assoc($result);
 print_r($data);
@@ -11,8 +11,9 @@ if (isset($_POST['submit'])) {
     $description = $_POST['description'];   
     $class_id = $_POST['class_id'];          
     $subject_id = $_POST['subject_id']; 
-    $section = $_POST['section']; 
+    $section = strtoupper($_POST['section']); 
     $teacher_id = $_POST['teacher_id'];   
+    $marks=$_POST['marks'];
     //File upload
     //check if file is uploaded by user
     if ($_FILES['pic']['error'] > 0) {
@@ -24,12 +25,12 @@ if (isset($_POST['submit'])) {
         $location = $_FILES['pic']['tmp_name'];
         move_uploaded_file($location,'../upload/'.$file);
     }
-    $q = "update `homework` set `title`='$title',`description`='$description',`class_id`='$class_id',`subject_id`='$subject_id',`section`='$section',`teacher_id`='$teacher_id',`file`='$file', where `id`='$id'";
+    $q = "update `assignment` set `title`='$title',`description`='$description',`class_id`='$class_id',`subject_id`='$subject_id',`section`='$section',`teacher_id`='$teacher_id',`file`='$file',`marks`='$marks' where `id`='$id'";
     $result = mysqli_query($conn,$q);
     if($result > 0){
-        echo "<script>window.location.assign('view_homework.php?msg=Record Updated.');</script>";
+        echo "<script>window.location.assign('view_assignment.php?msg=Record Updated.');</script>";
     }else{
-        echo "<script>window.location.assign('view_homework.php?msg=Try Again.');</script>";
+        echo "<script>window.location.assign('view_assignment.php?msg=Try Again.');</script>";
     }
 }
 ?>
@@ -37,7 +38,7 @@ if (isset($_POST['submit'])) {
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
         <div class="container">
-            <h2>Edit homework</h2>
+            <h2>Edit assignment</h2>
 
         </div>
     </div><!-- End Breadcrumbs -->
@@ -108,6 +109,10 @@ if (isset($_POST['submit'])) {
                         <div class="mb-3">
                             <label for="formFile" class="form-label">File</label>
                             <input class="form-control" type="file" id="formFile" name="pic">
+                        </div>
+                        <div class="mb-3">
+                            <label for="InputMarks" class="form-label">Marks</label>
+                            <input type="text" name="marks" class="form-control" id="InpuMarkst" aria-describedby="emailHelp">                                          
                         </div>
                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                     </form>

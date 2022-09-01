@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,34 +53,30 @@
         <ul>
           <li><a class="active" href="index.php">Home</a></li>
           <li><a href="about.php">About</a></li>
-          <li><a href="courses.php">Courses</a></li>
-          <li><a href="trainers.php">Trainers</a></li>
-          <li><a href="events.php">Events</a></li>
-          <li><a href="pricing.php">Pricing</a></li>
-
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.php">Contact</a></li>
+          <li><a href="view_holiday.php">Holidays</a></li>
+          <?php
+            if(isset($_SESSION['user_name'])){
+              ?>
+              <li><a href="view_homework.php">Homework</a></li>
+              <li><a href="view_assignment.php">Assignment</a></li>
+              <?php
+            }
+          ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="courses.php" class="get-started-btn">Get Started</a>
+      <?php
+      if (isset($_SESSION['user_name'])) {
+      ?>
+      <a href="logout.php" class="get-started-btn">Logout</a>
+      <?php
+      } else {
+      ?>
+        <a href="login.php" class="get-started-btn">Login</a>
+      <?php
+      }
+      ?>
 
     </div>
   </header><!-- End Header -->

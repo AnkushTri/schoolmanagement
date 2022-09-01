@@ -1,10 +1,10 @@
 <?php
-  require "header.php";
-  if(!isset($_SESSION['admin_name'])){
-    echo "<script>window.location.assign('login.php');</script>";
-  }
-?> 
-    <main id="main">
+require "header.php";
+if (!isset($_SESSION['teacher_name'])) {
+  echo "<script>window.location.assign('login.php');</script>";
+}
+?>
+<main id="main">
   <section id="about" class="about">
     <div class="container-fluid" data-aos="fade-up">
       <div class="row  pt-5">
@@ -17,17 +17,17 @@
   <section id="events" class="events pt-0">
     <div class="container aos-init aos-animate" data-aos="fade-up">
       <div class="row">
-        <div class="col-md-4 d-flex align-items-stretch">
+        <div class="col-md-6 d-flex align-items-stretch">
           <div class="card">
             <div class="card-img">
               <img src="assets/img/events-1.jpg" alt="...">
             </div>
             <div class="card-body">
-              <h5 class="card-title"><a href="#">Total Pending Assignment</a></h5>
+              <h5 class="card-title"><a href="view_assignment.php">Total Pending Assignment</a></h5>
               <p class="fst-italic text-center">
                 <?php
                 include_once "config.php";
-                $a = "select count(*) as count from answer_assignment WHERE status='PENDING'";
+                $a = "select count(*) as count from answer_assignment LEFT JOIN assignment on answer_assignment.assignment_id=assignment.id WHERE assignment.teacher_id='" . $_SESSION['teacher_id'] . "' and answer_assignment.status='PENDING'";
                 $resa = mysqli_query($conn, $a);
                 $course = mysqli_fetch_assoc($resa);
                 echo $course['count'];
@@ -36,7 +36,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 d-flex align-items-stretch">
+        <div class="col-md-6 d-flex align-items-stretch">
           <div class="card">
             <div class="card-img">
               <img src="assets/img/course-3.jpg" alt="...">
@@ -46,29 +46,10 @@
               <p class="fst-italic text-center">
                 <?php
                 include_once "config.php";
-                $l = "SELECT count(*) as count FROM student";
+                $l = "SELECT count(*) as count FROM student where class_id IN (SELECT GROUP_CONCAT(class_id) AS site_list from (SELECT * FROM `assign_teacher` where teacher_id='" . $_SESSION['teacher_id'] . "' GROUP BY class_id)as data)";
                 $resl = mysqli_query($conn, $l);
                 $level = mysqli_fetch_assoc($resl);
                 echo $level['count'];
-                ?>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex align-items-stretch">
-          <div class="card">
-            <div class="card-img">
-              <img src="assets/img/events-1.jpg" alt="...">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title"><a href="view_teacher.php">Total Teachers</a></h5>
-              <p class="fst-italic text-center">
-                <?php
-                include_once "config.php";
-                $a = "select count(*) as count from teacher";
-                $resa = mysqli_query($conn, $a);
-                $course = mysqli_fetch_assoc($resa);
-                echo $course['count'];
                 ?>
               </p>
             </div>
@@ -79,5 +60,5 @@
   </section>
 </main>
 <?php
-  require "footer.php";
+require "footer.php";
 ?>

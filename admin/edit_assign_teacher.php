@@ -31,7 +31,7 @@ if (!isset($_SESSION['admin_name'])) {
                 if (isset($_POST['submit'])) {
                     $teacher_id = $_POST['teacher_id'];
                     $class_id = $_POST['class_id'];
-                    $section = $_POST['section'];
+                    $section = strtoupper($_POST['section']); 
                     $subject_id = $_POST['subject_id'];
                     $q = "update `assign_teacher` set `teacher_id`='$teacher_id',`class_id`='$class_id',`section`='$section',`subject_id`='$subject_id' where id='$id'";
                     $result = mysqli_query($conn, $q);

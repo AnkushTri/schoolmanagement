@@ -1,6 +1,6 @@
-<!-- <?php
+<?php
  session_start();
-?> -->
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,24 +52,32 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
         <?php
-          if (isset($_SESSION['admin_name'])) {
+          if (isset($_SESSION['teacher_name'])) {
           ?>
-          <li><a href="index.php">Home</a></li>
+          <!-- <li><a href="index.php">Home</a></li>
           <li><a href="view_classes.php">Classes</a></li>         
           <li><a href="view_subject.php">Subject</a></li>
-          <li class="dropdown"><a href="#"><span>Holiday</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="javascript:void(0)"><span>Holiday</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="add_holidays.php">Add</a></li>                           
               <li><a href="view_holidays.php">View</a></li>
             </ul>
+          </li> -->
+          <li><a href="index.php">Home</a></li>
+          <li><a href="view_holidays.php">Holidays</a></li>
+          <li class="dropdown"><a href="javascript:void(0)"><span>Students</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="add_student.php">Add</a></li>                           
+              <li><a href="view_student.php">View</a></li>
+            </ul>
           </li>
-          <li class="dropdown"><a href="#"><span>Homework</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="javascript:void(0)"><span>Homework</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="add_homework.php">Add</a></li>                           
               <li><a href="view_homework.php">View</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#"><span>Assignment</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="javascript:void(0)"><span>Assignment</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="add_assignment.php">Add</a></li>                           
               <li><a href="view_assignment.php">View</a></li>
@@ -77,6 +85,10 @@
           </li>
           <li><a class="active" href="logout.php">Logout</a></li>
           <?php
+          }else{
+            ?>
+            <li><a href="login.php">Login</a></li>
+            <?php
           }
           ?>
         </ul>

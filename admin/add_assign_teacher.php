@@ -27,7 +27,7 @@ if(!isset($_SESSION['admin_name'])){
                 if (isset($_POST['submit'])) {
                     $teacher_id = $_POST['teacher_id'];
                     $class_id = $_POST['class_id'];
-                    $section = $_POST['section'];
+                    $section = strtoupper($_POST['section']); 
                     $subject_id = $_POST['subject_id'];
                     $q = "insert into `assign_teacher` (`teacher_id`,`class_id`,`section`,`subject_id`) values ('$teacher_id','$class_id','$section','$subject_id')";
                     $result = mysqli_query($conn, $q);
