@@ -62,7 +62,6 @@ if (!isset($_SESSION['admin_name'])) {
                         <div class="mb-3">
                             <label for="exampleInputName" class="form-label">Name</label>
                             <input value="<?php echo $data['name']; ?>" type="text" name="name" class="form-control" id="exampleInputName" aria-describedby="emailHelp" required>
-
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail" class="form-label">Email</label>
@@ -109,8 +108,7 @@ if (!isset($_SESSION['admin_name'])) {
                         <div class="mb-3">
                             <label for="exampleInputID" class="form-label">Id-Proof</label>
                             <input class="form-control" type="file" id="exampleInputID" name="pic">
-                            <img class="img img-fluid" style="height:50px ;" src="../upload/<?php echo $data['id_proof']; ?>">
-                            <!-- <input class="form-control" type="text" id="formFile" name="image"> -->
+                            <img class="img img-fluid" style="height:50px ;" src="../upload/<?php echo $data['id_proof']; ?>" value="<?php echo $data['id_proof']; ?>">                            <!-- <input class="form-control" type="text" id="formFile" name="image"> -->
                         </div>
                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                     </form>

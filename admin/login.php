@@ -5,7 +5,7 @@ require "header.php";
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
         <div class="container">
-            <h2>Login</h2>
+            <h2>Admin Login</h2>
 
         </div>
     </div><!-- End Breadcrumbs -->
@@ -39,7 +39,7 @@ require "header.php";
                     }
                 ?>
                 <div class="col-lg-12 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" >
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email</label>
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

@@ -5,7 +5,7 @@ require "header.php";
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
         <div class="container">
-            <h2>Login</h2>
+            <h2>Teacher Login</h2>
 
         </div>
     </div><!-- End Breadcrumbs -->
@@ -39,7 +39,7 @@ require "header.php";
                     }
                 ?>
                 <div class="col-lg-12 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" onsubmit="return checkValue()">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email</label>
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -58,6 +58,25 @@ require "header.php";
         </div>
     </section><!-- End About Section -->
 </main>
+<script>
+    function checkValue(){
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        //alert(email+' '+password);
+        // if(email == ''){
+        //     alert('Please Fill Email');
+        //     return false;
+        // }
+        // if(password == ''){
+        //     alert('Please Fill Password');
+        //     return false;
+        // }
+        if(email == '' || password == ''){
+            alert('Please Fill Form');
+            return false;
+        }
+    }
+</script>
 <?php
 require "footer.php";
 ?>

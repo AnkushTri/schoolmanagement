@@ -8,7 +8,7 @@ if(!isset($_SESSION['admin_name'])){
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
         <div class="container">
-            <h2>Login</h2>
+            <h2>Admin Login</h2>
 
         </div>
     </div><!-- End Breadcrumbs -->

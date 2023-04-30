@@ -27,7 +27,7 @@ if(!isset($_SESSION['admin_name'])){
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>                             
-                                <th scope="col">Description</th>                             
+                                <!-- <th scope="col">Description</th>                              -->
                                 <th scope="col">Image</th>                             
                                 <th scope="col">Date</th>                             
                                 <th scope="col">Edit</th>
@@ -45,7 +45,7 @@ if(!isset($_SESSION['admin_name'])){
                             <tr>
                                         <td><?php echo $i;?></td>
                                         <td><?php echo $data['name'];?></td>                                                                          
-                                        <td><?php echo $data['description'];?></td>  
+                                        <!-- <td><?php echo $data['description'];?></td>   -->
                                         <td><img class="img img-fluid" style="height:50px;" src="../upload/<?php echo $data['image'];?>"></td>                                                                                                                                 
                                         <td><?php echo $data['date'];?></td>                                                                          
                                         <td><a href="edit_holidays.php?id=<?php echo $data['id'];?>" class="text-success fw-bold"><i class="bi bi-pencil-square"></i></a></td>

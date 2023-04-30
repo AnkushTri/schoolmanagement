@@ -1,6 +1,6 @@
 <?php
 require "header.php";
-if (!isset($_SESSION['teacher_name'])) {
+if (!isset($_SESSION['admin_name'])) {
     echo "<script>window.location.assign('login.php');</script>";
 }
 ?>
@@ -37,13 +37,12 @@ if (!isset($_SESSION['teacher_name'])) {
                                 <th scope="col">Parent's Contact</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Edit</th>
-                                <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             include "config.php";
-                            $q = "SELECT student.*,classes.name as c_name FROM student left join classes on student.class_id=classes.id where student.class_id IN (SELECT GROUP_CONCAT(class_id) AS site_list from (SELECT * FROM `assign_teacher` where teacher_id='".$_SESSION['teacher_id']."' GROUP BY class_id)as data)";
+                            $q = "SELECT student.*,classes.name as c_name FROM student left join classes on student.class_id=classes.id where student.class_id IN (SELECT GROUP_CONCAT(class_id) AS site_list from (SELECT * FROM `assign_teacher`GROUP BY class_id)as data)";
                             $result = mysqli_query($conn, $q);
                             $i = 1;
                             foreach ($result as $data) {
@@ -61,7 +60,6 @@ if (!isset($_SESSION['teacher_name'])) {
                                     <td><?php echo $data['parent_contact']; ?></td>
                                     <td><?php echo $data['address']; ?></td>
                                     <td><a href="edit_student.php?id=<?php echo $data['id'];?>" class="text-success fw-bold"><i class="bi bi-pencil-square"></i></a></td>
-                                    <td><a href="delete_student.php?id=<?php echo $data['id'];?>" class="btn btn-danger">DELETE</a></td>
                                 </tr>
                             <?php
                                 $i++;

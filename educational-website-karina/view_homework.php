@@ -8,7 +8,7 @@ if(!isset($_SESSION['user_name'])){
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
         <div class="container">
-            <h2>View Holidays</h2>
+            <h2>View Homework</h2>
         </div>
     </div><!-- End Breadcrumbs -->
     <!-- ======= About Section ======= -->
@@ -26,26 +26,26 @@ if(!isset($_SESSION['user_name'])){
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>                             
-                                <!-- <th scope="col">Description</th>                              -->
-                                <th scope="col">Image</th>                             
-                                <th scope="col">Date</th> 
+                                <th scope="col">Title</th>                             
+                                <th scope="col">Description</th>                      
+                                <th scope="col">Subject</th>                            
+                                <th scope="col">File</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             include "admin/config.php";
-                            $q = "select * from `holidays`";
+                            $q = "SELECT homework.*,subject.name as s_name FROM `homework` LEFT JOIN student ON homework.class_id=student.class_id AND homework.section=student.section LEFT JOIN subject on homework.subject_id=subject.id WHERE student.id='".$_SESSION['user_id']."'";
                             $result = mysqli_query($conn,$q);
                             $i = 1;
                             foreach($result as $data){
                             ?>
                             <tr>
                                         <td><?php echo $i;?></td>
-                                        <td><?php echo $data['name'];?></td>                                                                          
-                                        <!-- <td><?php echo $data['description'];?></td>   -->
-                                        <td><img class="img img-fluid" style="height:50px;" src="upload/<?php echo $data['image'];?>"></td>                                                                                                                                 
-                                        <td><?php echo $data['date'];?></td>                                                                          
+                                        <td><?php echo $data['title'];?></td>
+                                        <td><?php echo $data['description'];?></td>
+                                        <td><?php echo $data['s_name'];?></td>
+                                        <td><a target="_blank" href="upload/<?php echo $data['file'];?>">View File</a></td>
                                     </tr>
                                 <?php
                                     $i++;
@@ -61,4 +61,4 @@ if(!isset($_SESSION['user_name'])){
 </main>
 <?php
 require "footer.php";
-?>                                                                            
+?> 

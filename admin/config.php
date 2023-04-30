@@ -1,5 +1,5 @@
 <?php
-$conn=mysqli_connect("localhost","root","","mentor");
+$conn=mysqli_connect("localhost","root","","dummy");
 if(!$conn){
     echo "Error...";
 }

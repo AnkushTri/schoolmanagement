@@ -9,7 +9,7 @@
     <div class="container-fluid" data-aos="fade-up">
       <div class="row  pt-5">
         <div class="jumbotron text-bg-success col-12">
-          <h1 class="display-4 text-center">Welcome <?php echo $_SESSION['teacher_name']; ?>!</h1>
+          <h1 class="display-4 text-center">Welcome <?php echo $_SESSION['admin_name']; ?>!</h1>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
               <img src="assets/img/events-1.jpg" alt="...">
             </div>
             <div class="card-body">
-              <h5 class="card-title"><a href="#">Total Pending Assignment</a></h5>
+              <h5 class="card-title"><a href="view_assignment.php">Total Pending Assignment</a></h5>
               <p class="fst-italic text-center">
                 <?php
                 include_once "config.php";

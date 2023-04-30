@@ -1,0 +1,11 @@
+1. Error while adding class
+2. No validations
+3. Input type date missing 
+4. wrong datatype for image,date in holidays table
+5. Image not inserting in database for holidays and no random name set for image
+6. image not visible in edit holidays
+7. wrong datatype for contact,password,id_proof in teacher table
+8. no password encryption for add teacher
+9. donot show password for teacher in admin panel
+10. edit teacher, edit subject, delete subject, edit assign teacher missing
+11. Donot use ' and space in database column name
