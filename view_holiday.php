@@ -34,7 +34,7 @@ if(!isset($_SESSION['user_name'])){
                         </thead>
                         <tbody>
                             <?php
-                            include "admin/config.php";
+                            include "assets/admin/config.php";
                             $q = "select * from `holidays`";
                             $result = mysqli_query($conn,$q);
                             $i = 1;

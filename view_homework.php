@@ -34,7 +34,7 @@ if(!isset($_SESSION['user_name'])){
                         </thead>
                         <tbody>
                             <?php
-                            include "admin/config.php";
+                            include "assets/admin/config.php";
                             $q = "SELECT homework.*,subject.name as s_name FROM `homework` LEFT JOIN student ON homework.class_id=student.class_id AND homework.section=student.section LEFT JOIN subject on homework.subject_id=subject.id WHERE student.id='".$_SESSION['user_id']."'";
                             $result = mysqli_query($conn,$q);
                             $i = 1;

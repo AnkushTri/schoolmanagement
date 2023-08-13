@@ -19,9 +19,9 @@ require "header.php";
                     echo "<div class='col-12 alert alert-danger'>Please Login First.</div>";
                 }
                     if(isset($_POST['submit'])){
-                        include "admin/config.php";
+                        include "assets/admin/config.php";
                         $email = $_POST['email'];
-                        $password = md5($_POST['password']);
+                        $password = $_POST['password'];
                         //echo $email.' '.$password;
                         $q = "select * from `student` where `email`='$email' and `password`='$password'";
                         $result = mysqli_query($conn,$q);

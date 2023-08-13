@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_name'])) {
 
             <div class="row">
                 <?php
-                include "admin/config.php";
+                include "assets/admin/config.php";
                 $id = $_GET['id'];
                 $q = "SELECT * FROM `assignment` WHERE assignment.id='$id'";
                 $res = mysqli_query($conn, $q);

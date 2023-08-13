@@ -1,7 +1,7 @@
 <?php
 $n=$_POST['name'];
 echo "name is ".$n;
-$conn=mysqli_connect("localhost","root","","dummy");
+$conn=mysqli_connect("localhost","root","","mentor");
 if(!$conn){
     echo "Error...";
 }

@@ -21,9 +21,10 @@ require "header.php";
                     if(isset($_POST['submit'])){
                         include "config.php";
                         $email = $_POST['email'];
-                        $password = md5($_POST['password']);
+                        $password = $_POST['password'];
                         //echo $email.' '.$password;
                         $q = "select * from `admin` where `email`='$email' and `password`='$password'";
+                        // $q="SELECT * FROM `admin` WHERE `email`='Singhkarina90@gmail.com' AND `password`='aaravansh9'";
                         $result = mysqli_query($conn,$q);
                         if(mysqli_num_rows($result) > 0){
                             //login
